@@ -11,8 +11,8 @@ Resource            users.resource
 *** Variables ***
 
 ${SITE_URL}         https://authentication-6o1.pages.dev
-${USERNAME}         ${USERNAME2}
-${PASSWORD}         ${PASSWORD2}
+${USERNAME}         ${USER1_USERNAME}
+${PASSWORD}         ${USER1_PASSWORD}
 
 *** Test Cases ***
 
