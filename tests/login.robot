@@ -4,13 +4,15 @@ Library             Browser
 # The following lines are required for automatic assessment of the exercise:
 Test Setup          New Context    tracing=True
 Test Teardown       Close Context
-Suite Teardown      Close Browser
+Resource            users.resource
+
+#Suite Teardown      Close Browser
 
 *** Variables ***
 
 ${SITE_URL}         https://authentication-6o1.pages.dev
-${USERNAME}         alice@example.com
-${PASSWORD}         }3jc\\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj
+${USERNAME}         ${USERNAME2}
+${PASSWORD}         ${PASSWORD2}
 
 *** Test Cases ***
 
@@ -20,7 +22,7 @@ Successful Login
     Fill Form       ${USERNAME}   ${PASSWORD}
     Submit Form
 
-    Assert Text Is Visible   Welcome Alice!
+    Assert Text Is Visible   Successfully logged in
 
     Get Url         contains    dashboard
 
@@ -46,6 +48,18 @@ Unknown username fails login
     Submit Form
 
     Assert Text Is Visible     Invalid email or password
+
+User is redirected to login after logging out
+    New Page        ${SITE_URL}
+
+    Fill Form       ${USERNAME}   ${PASSWORD}
+    Submit Form
+
+    Assert Text Is Visible   Successfully logged in
+    Get Url         contains    dashboard
+
+    Click           "Logout"
+    Assert Text Is Visible    You have been logged out.
 
 *** Keywords ***
 
