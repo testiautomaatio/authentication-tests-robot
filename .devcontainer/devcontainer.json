@@ -15,8 +15,5 @@
                 "d-biehl.robotcode"
             ]
         }
-    },
-    "remoteEnv": {
-        "PLAYWRIGHT_BROWSERS_PATH": "/home/vscode/pw-browsers"
     }
 }

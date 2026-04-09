@@ -10,8 +10,5 @@ python -m pip install --upgrade pip
 # Install Robot Framework and the Browser library
 pip install -r requirements.txt
 
-# Init rfbrowser but skip browsers, as we need to install them with dependencies
-rfbrowser init --skip-browsers
-
 # Container does not include all browser dependencies, so we install them too
-npx --yes playwright install chromium --with-deps
+rfbrowser init chromium --with-deps
