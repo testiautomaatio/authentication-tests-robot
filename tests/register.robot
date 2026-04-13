@@ -7,17 +7,19 @@ Test Teardown       Close Context
 
 # The users.resource file contains usernames and passwords that can be used:
 Resource            users.resource
+Resource            pages/registerpage.robot
 
 
 *** Variables ***
 
-${SITE_URL}         https://authentication-6o1.pages.dev/signUp
+# The email address of an existing user, which should not be allowed to register again.
 ${EXISTING_EMAIL}   ${USER1_USERNAME}
+
 
 *** Test Cases ***
 
 Registration requires all fields to be filled
-    New Page        ${SITE_URL}
+    Open Registration Page
     Submit Form
 
     Assert Text Is Visible    Name is required.
@@ -25,14 +27,16 @@ Registration requires all fields to be filled
     Assert Text Is Visible    Password must be at least 6 characters long.
 
 Already registered email must show an error message
-    New Page        ${SITE_URL}
+    Open Registration Page
     Fill Registration Form       John Doe     ${EXISTING_EMAIL}     password1
     Submit Form
 
     Assert Text Is Visible    Email is already in use
 
 Successful Registration
-    New Page        ${SITE_URL}
+    Open Registration Page
+
+    # local variables can be used to store test data that is only relevant for a single test case
     VAR  ${user}  new_user@example.com
     VAR  ${pass}  Correct Horse Battery Staple
 
@@ -47,22 +51,3 @@ Successful Registration
     Assert Text Is Visible    Successfully logged in
 
 
-*** Keywords ***
-
-Submit Form
-    Click    form button[type=submit]
-
-Assert Text Is Visible
-    [Arguments]    ${text}
-    Click    "${text}"
-
-Fill Registration Form
-    [Arguments]    ${name}  ${email}  ${password}
-    Fill Text    id=name        ${name}
-    Fill Text    id=email       ${email}
-    Fill Text    id=password    ${password}
-
-Fill Login Form
-    [Arguments]    ${username}  ${password}
-    Fill Text       id=email      ${username}
-    Fill Text       id=password   ${password}
