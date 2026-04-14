@@ -77,26 +77,30 @@ To get started, we recommend reviewing the [Browser library](https://marketsquar
 
 ### Login
 
-* The service home page must contain a login form with fields for email and password, and a login button.
-* A registered user must be able to sign in with email and password.
-* After successful login, the user must be redirected to `/dashboard`, where a welcome message is shown.
-* Both username and password are required, and missing values must show an error message.
-* Login must notify if the username is in an invalid format or if the password is too short.
-* Login must prevent access with both an unknown username and an incorrect password.
-
-Additionally:
-
-* If a user tries to access `/dashboard` directly without a valid login session, they must be redirected back to the login page.
-* When a logged-in user logs out using the "Logout" button, they must be redirected back to the login page.
-
+1. The service home page must contain a login form with fields for email and password, and a login button
+2. A registered user must be able to sign in with their email and password
+    * Login must be case-insensitive for the email field, but case-sensitive for the password field
+3. After successful login, the user must be redirected to `/dashboard`, where a welcome message is shown
+4. Login must prevent unauthorized access
+    * Both username and password are required
+    * Missing or invalid values must show error messages (invalid email or password length)
+    * Failed login attempts must keep the user on login page and show an error message
+5. Users can't access `/dashboard` directly without a valid login session
+    * they must be redirected back to the login page
+    * an error message needs to be shown
+6. When a logged-in user logs out using the "Logout" button, they are redirected back to the login page
 
 ### Registration
 
-* Registration must be accessible both directly via `/signUp` and through the home page "Sign up" link.
-* Name, email, and password are required for registration.
-* A registration attempt with an already registered email must show an error message.
-* Registration with valid data must create an account, show a success message, and redirect to the login page.
-* An account created during registration must be usable for login immediately afterward (within the same test case).
+1. Registration must be accessible both directly via `/signUp` URL and through the home page "Sign up" link
+2. Name, email, and password are required for registration
+    * Missing or invalid values must show error messages
+3. A registration attempt with an already registered email must show an error message
+    * Registration is case-insensitive for the email field, so just changing the case of letters in the email should not allow registration to succeed
+4. Registration with valid data must create an account
+    * A success message needs to be shown
+    * The user must be redirected to the login page
+5. An account created during registration must be usable for login immediately afterward (within the same browser session)
 
 
 ### Usernames and passwords in environment variables

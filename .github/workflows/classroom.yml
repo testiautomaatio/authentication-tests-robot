@@ -65,8 +65,28 @@ jobs:
         timeout: 1
         max-score: 10
 
-    - name: Login email is validated
+    - name: Login username is case insensitive
       id: login-page-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Login username is case insensitive
+        setup-command: ''
+        command: "./.github/find_trace.sh 'login-case-insensitive-email'"
+        timeout: 1
+        max-score: 5
+
+    - name: Login accepts correct credentials
+      id: login-page-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Login accepts correct credentials
+        setup-command: ''
+        command: "./.github/find_trace.sh 'Successfully logged in'"
+        timeout: 1
+        max-score: 5
+
+    - name: Login email is validated
+      id: login-page-4a
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Login email is validated
@@ -76,7 +96,7 @@ jobs:
         max-score: 10
 
     - name: Login password is validated
-      id: login-page-3
+      id: login-page-4b
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Login password is validated
@@ -86,7 +106,7 @@ jobs:
         max-score: 10
 
     - name: Login rejects invalid credentials
-      id: login-page-4
+      id: login-page-4c
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Login rejects invalid credentials
@@ -95,13 +115,13 @@ jobs:
         timeout: 1
         max-score: 10
 
-    - name: Login accepts correct credentials
+    - name: Unauthenticated users cannot access /dashboard
       id: login-page-5
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Login accepts correct credentials
+        test-name: Unauthenticated users cannot access /dashboard
         setup-command: ''
-        command: "./.github/find_trace.sh 'Successfully logged in'"
+        command: "./.github/find_trace.sh 'You must be logged in to enter the dashboard'"
         timeout: 1
         max-score: 10
 
@@ -115,39 +135,51 @@ jobs:
         timeout: 1
         max-score: 10
 
-    - name: Unauthenticated users cannot access /dashboard
-      id: login-page-7
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Unauthenticated users cannot access /dashboard
-        setup-command: ''
-        command: "./.github/find_trace.sh 'You must be logged in to enter the dashboard'"
-        timeout: 1
-        max-score: 10
+
 
     # registration page tests
-    - name: Registration page form validation
+    - name: Registration page exists
       id: register-page-1
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Registration page exists
+        setup-command: ''
+        command: "./.github/find_trace.sh 'Full name'"
+        timeout: 1
+        max-score: 5
+
+    - name: Registration page form validation
+      id: register-page-2
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Registration page form validation
         setup-command: ''
         command: "./.github/find_trace.sh 'name is required'"
         timeout: 1
-        max-score: 10
+        max-score: 5
 
     - name: Registration email is already in use
-      id: register-page-2
+      id: register-page-3a
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Registration email is already in use
         setup-command: ''
         command: "./.github/find_trace.sh 'Email is already in use'"
         timeout: 1
-        max-score: 10
+        max-score: 5
+
+    - name: Registration email is case insensitive
+      id: register-page-3b
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Registration email is case insensitive
+        setup-command: ''
+        command: "./.github/find_trace.sh 'registration-case-insensitive-email-conflict'"
+        timeout: 1
+        max-score: 5
 
     - name: Registration creates a new account
-      id: register-page-3
+      id: register-page-4
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Registration creates a new account
@@ -162,17 +194,20 @@ jobs:
         LOGIN-PAGE-1_RESULTS: "${{steps.login-page-1.outputs.result}}"
         LOGIN-PAGE-2_RESULTS: "${{steps.login-page-2.outputs.result}}"
         LOGIN-PAGE-3_RESULTS: "${{steps.login-page-3.outputs.result}}"
-        LOGIN-PAGE-4_RESULTS: "${{steps.login-page-4.outputs.result}}"
+        LOGIN-PAGE-4A_RESULTS: "${{steps.login-page-4a.outputs.result}}"
+        LOGIN-PAGE-4B_RESULTS: "${{steps.login-page-4b.outputs.result}}"
+        LOGIN-PAGE-4C_RESULTS: "${{steps.login-page-4c.outputs.result}}"
         LOGIN-PAGE-5_RESULTS: "${{steps.login-page-5.outputs.result}}"
         LOGIN-PAGE-6_RESULTS: "${{steps.login-page-6.outputs.result}}"
-        LOGIN-PAGE-7_RESULTS: "${{steps.login-page-7.outputs.result}}"
 
         REGISTER-PAGE-1_RESULTS: "${{steps.register-page-1.outputs.result}}"
         REGISTER-PAGE-2_RESULTS: "${{steps.register-page-2.outputs.result}}"
-        REGISTER-PAGE-3_RESULTS: "${{steps.register-page-3.outputs.result}}"
+        REGISTER-PAGE-3A_RESULTS: "${{steps.register-page-3a.outputs.result}}"
+        REGISTER-PAGE-3B_RESULTS: "${{steps.register-page-3b.outputs.result}}"
+        REGISTER-PAGE-4_RESULTS: "${{steps.register-page-4.outputs.result}}"
 
       with:
-        runners: login-page-1,login-page-2,login-page-3,login-page-4,login-page-5,login-page-6,login-page-7,register-page-1,register-page-2,register-page-3
+        runners: login-page-1,login-page-2,login-page-3,login-page-4a,login-page-4b,login-page-4c,login-page-5,login-page-6,register-page-1,register-page-2,register-page-3a,register-page-3b,register-page-4
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}

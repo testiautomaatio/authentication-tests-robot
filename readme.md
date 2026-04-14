@@ -79,26 +79,33 @@ Jotta pääset alkuun, suosittelemme tutustumaan [Browser-kirjaston](https://mar
 
 ### Kirjautuminen
 
-* Palvelun etusivulla tulee olla kirjautumislomake, jossa on kentät sähköpostille ja salasanalle, sekä kirjautumisnappi.
-* Rekisteröityneen käyttäjän tulee voida kirjautua sisään sähköpostilla ja salasanalla.
-* Käyttäjä tulee ohjata onnistuneen kirjautumisen jälkeen osoitteeseen `/dashboard`, jossa näytetään tervetuloa-viesti.
-* Sekä käyttäjätunnus ja salasana ovat pakollisia, ja puuttuvista tiedoista tulee näyttää virheilmoitus.
-* Kirjautumisen tulee huomauttaa, mikäli käyttäjätunnus on väärässä muodossa tai salasana on liian lyhyt.
-* Kirjautumisen tulee estää kirjautumiset sekä tuntemattomalla käyttäjätunnuksella että väärällä salasanalla.
+### Kirjautuminen
 
-Lisäksi:
-
-* Jos käyttäjä yrittää päästä suoraan `/dashboard`-sivulle ilman voimassa olevaa kirjautumista, hänet tulee ohjata takaisin kirjautumissivulle.
-* Kun kirjautunut käyttäjä kirjatuu ulos käyttäen "Logout" -painiketta, hänet tulee ohjata takaisin kirjautumissivulle.
+1. Palvelun etusivulla tulee olla kirjautumislomake, jossa on kentät sähköpostille ja salasanalle sekä kirjautumispainike
+2. Rekisteröity käyttäjä voi kirjautua sisään sähköpostilla ja salasanalla
+    * Kirjautuminen tulee olla kirjainkoosta riippumaton sähköpostikentälle, mutta salasanan kirjainkoon tulee olla täsmälleen oikein
+3. Onnistuneen kirjautumisen jälkeen käyttäjä ohjataan osoitteeseen `/dashboard`, jossa näytetään tervetuloa-viesti
+4. Kirjautumisen tulee estää luvaton pääsy
+    * Sekä sähköposti että salasana ovat pakollisia
+    * Puuttuvat tai virheelliset arvot tulee näyttää virheilmoituksina (virheellinen sähköposti tai salasanan pituus)
+    * Epäonnistunut kirjautuminen pitää käyttäjän kirjautumissivulla ja näyttää virheilmoituksen
+5. Käyttäjät eivät voi päästä suoraan osoitteeseen `/dashboard` ilman onnistunutta kirjautumista
+    * käyttäjä tulee ohjata takaisin kirjautumissivulle
+    * käyttäjälle tulee näyttää virheilmoitus
+6. Kun kirjautunut käyttäjä kirjautuu ulos, hänet ohjataan takaisin kirjautumissivulle
 
 
 ### Rekisteröityminen
 
-* Rekisteröitymiseen tulee päästä sekä suoraan `/signUp`-osoitteesta että etusivun "Sign up" -linkistä.
-* Nimi, sähköposti ja salasana ovat rekisteröitymisessä pakollisia.
-* Rekisteröitymisyritys jo rekisteröidyllä sähköpostilla näyttää virheilmoituksen.
-* Rekisteröityminen oikeilla tiedoilla luo tunnuksen, näyttää onnistumisviestin ja ohjaa kirjautumissivulle.
-* Rekisteröitymisessä luotua tiliä tulee voida käyttää kirjautumiseen heti rekisteröitymisen jälkeen (saman testitapauksen sisällä).
+1. Rekisteröityminen tulee olla mahdollista sekä suoraan osoitteessa `/signUp` että etusivun linkin kautta
+2. Nimi, sähköposti ja salasana ovat pakollisia rekisteröitymisessä
+    * Puuttuvat tai virheelliset tiedot tulee näyttää virheilmoituksina
+3. Rekisteröitymistä yritettäessä jo rekisteröidyllä sähköpostilla tulee näyttää virheilmoitus
+    * Rekisteröityminen on kirjainkoosta riippumaton sähköpostikentälle, joten vain kirjainkoosta poikkeavan sähköpostin käyttö ei voi johtaa onnistuneeseen rekisteröitymiseen
+4. Rekisteröityminen vaadituilla tiedoilla luo uuden käyttäjätilin
+    * Rekisteröitymisen jälkeen tulee näyttää onnistumisviesti
+    * Rekisteröitymisen jälkeen käyttäjä ohjataan kirjautumissivulle
+5. Rekisteröitymisessä luotu tili tulee olla käytettävissä kirjautumiseen heti sen jälkeen (saman selainistunnon sisällä)
 
 
 ### Käyttäjätunnukset ja salasanat ympäristömuuttujissa
