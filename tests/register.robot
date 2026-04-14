@@ -13,7 +13,7 @@ Resource            pages/registerpage.robot
 *** Variables ***
 
 # The email address of an existing user, which should not be allowed to register again.
-${EXISTING_EMAIL}   ${USER1_USERNAME}
+${EXISTING_EMAIL}   ${JANE_USERNAME}
 
 
 *** Test Cases ***

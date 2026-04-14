@@ -9,8 +9,8 @@ Resource            pages/loginpage.robot
 *** Variables ***
 
 ${SITE_URL}         https://authentication-6o1.pages.dev
-${USERNAME}         ${USER1_USERNAME}
-${PASSWORD}         ${USER1_PASSWORD}
+${USERNAME}         ${JANE_USERNAME}
+${PASSWORD}         ${JANE_PASSWORD}
 
 *** Test Cases ***
 
