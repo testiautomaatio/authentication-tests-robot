@@ -1,5 +1,7 @@
 *** Settings ***
 
+Library             String
+
 # The following lines are required for automatic assessment of the exercise:
 Test Setup          New Context    tracing=True
 Test Teardown       Close Context
@@ -18,6 +20,16 @@ Successful Login
     Open Login Page
 
     Fill Form       ${USERNAME}   ${PASSWORD}
+    Submit Form
+
+    Assert Text Is Visible   Successfully logged in
+
+    Get Url         contains    dashboard
+
+Successful Login with case insensitive email
+    Open Login Page
+    ${email_uppercase}=    Convert To Uppercase    ${USERNAME}
+    Fill Form       ${email_uppercase}   ${PASSWORD}
     Submit Form
 
     Assert Text Is Visible   Successfully logged in

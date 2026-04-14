@@ -1,5 +1,6 @@
 *** Settings ***
 Library             Browser
+Library             String
 
 # The following lines are required for automatic assessment of the exercise:
 Test Setup          New Context    tracing=True
@@ -29,6 +30,15 @@ Registration requires all fields to be filled
 Already registered email must show an error message
     Open Registration Page
     Fill Registration Form       John Doe     ${EXISTING_EMAIL}     password1
+    Submit Form
+
+    Assert Text Is Visible    Email is already in use
+
+Registration is case insensitive
+    Open Registration Page
+    
+    ${email_uppercase}=    Convert To Uppercase    ${EXISTING_EMAIL}
+    Fill Registration Form       John Doe     ${email_uppercase}     password1
     Submit Form
 
     Assert Text Is Visible    Email is already in use
