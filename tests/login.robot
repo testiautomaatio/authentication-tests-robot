@@ -4,14 +4,11 @@ Library             Browser
 # The following lines are required for automatic assessment of the exercise:
 Test Setup          New Context    tracing=True
 Test Teardown       Close Context
-
-# The users.resource file contains usernames and passwords that can be used:
-Resource            users.resource
-
+Suite Teardown      Close Browser
 
 *** Variables ***
 
-${SITE_URL}         https://authentication-6o1.pages.dev/
+${SITE_URL}         https://authentication-6o1.pages.dev
 ${USERNAME}         alice@example.com
 ${PASSWORD}         }3jc\\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj
 
@@ -20,21 +17,47 @@ ${PASSWORD}         }3jc\\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj
 Successful Login
     New Page        ${SITE_URL}
 
-    Fill Text       id=email       ${USERNAME}
-    Fill Text       id=password    ${PASSWORD}
-
+    Fill Form       ${USERNAME}   ${PASSWORD}
     Submit Form
-    Assert Text Is Visible   "Welcome Alice!"
 
-    Get Url        contains    dashboard
+    Assert Text Is Visible   Welcome Alice!
 
+    Get Url         contains    dashboard
 
+Dashboard redirects to login
+    New Page        ${SITE_URL}/dashboard
+
+    Get Url         not contains   dashboard
+    Click           "You must be logged in to enter the dashboard"
+
+Login form validates username and password
+    New Page        ${SITE_URL}
+
+    Fill Form       foo    bar
+    Submit Form
+
+    Assert Text Is Visible      Please enter a valid email address.
+    Assert Text Is Visible      Password must be at least 6 characters long.
+
+Unknown username fails login
+    New Page        ${SITE_URL}
+
+    Fill Form      demo@example.com   password123
+    Submit Form
+
+    Assert Text Is Visible     Invalid email or password
 
 *** Keywords ***
 
 Assert Text Is Visible
     [Arguments]    ${text}
-    Get Element States    ${text}    contains    visible
+    Get Element States    "${text}"    contains    visible
+
+Fill Form
+    [Arguments]    ${username}  ${password}
+    Fill Text       id=email      ${username}
+    Fill Text       id=password   ${password}
+    
 
 Submit Form
     ${button}=     Get Element By Role   button   name=Sign in     exact=True
