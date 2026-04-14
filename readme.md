@@ -2,7 +2,7 @@
 
 # Ensimmäiset Robot Framework -testit 🤖
 
-Tämän tehtävän tarkoituksena on opetella suorittamaan ja kirjoittamaan testejä [Robot Framework -työkalulla](https://robotframework.org/). 
+Tämän tehtävän tarkoituksena on opetella suorittamaan ja kirjoittamaan testejä [Robot Framework -työkalulla](https://robotframework.org/).
 
 Tehtävä on jatkoa Playwright-tehtävälle, jossa harjoiteltiin kirjautumista ja rekisteröitymistä käyttäen samaa testattavaa sivustoa. Tässä Robot Framework -tehtävässä keskitytään samoihin toiminnallisuuksiin, mutta nyt tavoitteena on toteuttaa testit Robot Framework -työkalulla ja tutustua Robot Frameworkin toimintoihin ja syntaksiin.
 
@@ -26,7 +26,7 @@ Kun olet saanut Robot Frameworkin ja Browser-kirjaston asennettua, voit kokeilla
 robot --outputdir=test-results/ tests/example.robot
 ```
 
-Testin pitäisi mennä läpi onnistuneesti ja tulostaa testitulokset konsoliin. Lisäksi Robot Framework luo HTML-raportin, jonka voit avata selaimella. 
+Testin pitäisi mennä läpi onnistuneesti ja tulostaa testitulokset konsoliin. Lisäksi Robot Framework luo HTML-raportin, jonka voit avata selaimella.
 
 Raportin tarkasteleminen on erityisen hyödyllistä, mikäli testit epäonnistuvat, sillä raportti sisältää yksityiskohtaisia tietoja testitapauksista ja testien epäonnistuessä myös kuvankaappauksia.
 
@@ -49,12 +49,14 @@ Rekisteröityminen tällä lomakkeella luo uuden käyttäjätunnuksen, joka on v
 
 Kirjautuminen onnistuu osoitteessa https://authentication-6o1.pages.dev/. Kirjautumisen jälkeen käyttäjä ohjataan osoitteeseen https://authentication-6o1.pages.dev/dashboard, jossa näytetään tervetuloa-viesti. Kuten rekisteröityminen, myös kirjautuminen on voimassa vain saman istunnon sisällä.
 
-Itse luotavien tunnusten lisäksi sivustolla on kaksi valmista tunnusta, jotka ovat aina voimassa: `alice@example.com` ja `bob@example.com`:
+Itse luotavien tunnusten lisäksi sivustolla on kaksi valmista tunnusta, jotka ovat aina voimassa:
 
-| Name  | Username          | Password                           | Env variables in GitHub \*         |
-|-------|-------------------|------------------------------------|------------------------------------|
-| Alice | alice@example.com | `}3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj` | `USER1_USERNAME`, `USER1_PASSWORD` |
-| Bob   | bob@example.com   | `nUL9zA3q=Nt7\N,0?CL&c74U,Ic)0)dN` | `USER2_USERNAME`, `USER2_PASSWORD` |
+| Name     | Username             | Password                           | Env variables in GitHub \*         |
+|----------|----------------------|------------------------------------|------------------------------------|
+| Jane Doe | jane.doe@example.com | `ItWorksOnMyMac1!`                 | `JANE_USERNAME`, `JANE_PASSWORD`   |
+| John Doe | john.doe@example.com | `AllTestsPass1!`                   | `JOHN_USERNAME`, `JOHN_PASSWORD`   |
+| Alice    | alice@example.com    | `}3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj` | `ALICE_USERNAME`, `ALICE_PASSWORD` |
+| Bob      | bob@example.com      | `nUL9zA3q=Nt7\N,0?CL&c74U,Ic)0)dN` | `BOB_USERNAME`, `BOB_PASSWORD`     |
 
 Voit käyttää näitä tunnuksia niissä testitapauksissa, joissa tarvitset olemassa olevan käyttäjän kirjautumista tai rekisteröitymistä, tai haluat varmistaa, että samalla tunnuksella ei voi rekisteröityä uudelleen.
 
@@ -105,13 +107,15 @@ Käyttäjätunnusten, salasanojen ja API-avainten kirjoittaminen selkokielisinä
 
 Parempi tapa käsitellä salasanoja voisi olla salaisuuksien tallentaminen ympäristömuuttujiin tai CI-ympäristön salaisuuksiksi. Robot Frameworkissa voit käyttää ympäristömuuttujia [omalla syntaksilla](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#environment-variables).
 
-Voit halutessasi tutustua ympäristömuuttujien käyttöön Robot Frameworkissa ja määrittää omat paikalliset ympäristömuuttujasi `USER1_USERNAME`, `USER1_PASSWORD`, `USER2_USERNAME` ja `USER2_PASSWORD` -nimisiksi. Nämä muuttujat ovat myös määritettyinä GitHub actions -ympäristössä, joten testiesin pitäisi toimia myös arvioinnissa.
+Voit halutessasi tutustua ympäristömuuttujien käyttöön Robot Frameworkissa ja määrittää omat paikalliset ympäristömuuttujasi saman nimisiksi kuin GitHub actions -ympäristössä.
 
 > [!NOTE]
 > Jotta muuttujat toimivat oikein sekä omassa kehitysympäristössäsi että GitHub actions -arvioinnissa, vain seuraavat muuttujat on tuettuja:
 >
-> * Käyttäjän Alice ympäristömuuttujat: `USER1_USERNAME`, `USER1_PASSWORD`
-> * Käyttäjän Bob ympäristömuuttujat: `USER2_USERNAME`, `USER2_PASSWORD`
+> * `JANE_USERNAME` & `JANE_PASSWORD`
+> * `JOHN_USERNAME` & `JOHN_PASSWORD`
+> * `ALICE_USERNAME` & `ALICE_PASSWORD`
+> * `BOB_USERNAME` & `BOB_PASSWORD`
 
 
 ## Tehtävän automaattinen arviointi

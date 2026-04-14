@@ -47,12 +47,14 @@ Registration with this form creates a new user account that is valid only within
 
 Login is available at https://authentication-6o1.pages.dev/. After successful login, the user is redirected to https://authentication-6o1.pages.dev/dashboard, where a welcome message is shown. Like registration, login is also valid only within the same session.
 
-In addition to the temporary accounts you can create yourself, the site has two predefined accounts that are always valid: `alice@example.com` and `bob@example.com`:
+In addition to the temporary accounts you can create yourself, the site has predefined accounts that are always valid:
 
-| Name  | Username          | Password                           | Env variables in GitHub \*         |
-|-------|-------------------|------------------------------------|------------------------------------|
-| Alice | alice@example.com | `}3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj` | `USER1_USERNAME`, `USER1_PASSWORD` |
-| Bob   | bob@example.com   | `nUL9zA3q=Nt7\N,0?CL&c74U,Ic)0)dN` | `USER2_USERNAME`, `USER2_PASSWORD` |
+| Name     | Username             | Password                           | Env variables in GitHub \*         |
+|----------|----------------------|------------------------------------|------------------------------------|
+| Jane Doe | jane.doe@example.com | `ItWorksOnMyMac1!`                 | `JANE_USERNAME`, `JANE_PASSWORD`   |
+| John Doe | john.doe@example.com | `AllTestsPass1!`                   | `JOHN_USERNAME`, `JOHN_PASSWORD`   |
+| Alice    | alice@example.com    | `}3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj` | `ALICE_USERNAME`, `ALICE_PASSWORD` |
+| Bob      | bob@example.com      | `nUL9zA3q=Nt7\N,0?CL&c74U,Ic)0)dN` | `BOB_USERNAME`, `BOB_PASSWORD`     |
 
 You can use these credentials in test cases where you need login or registration with an existing user, or where you want to verify that the same account cannot be registered again.
 
@@ -103,13 +105,15 @@ Writing usernames, passwords, and API keys in plain text directly in test cases 
 
 A better approach is to store secrets in environment variables or CI secrets. In Robot Framework, you can use environment variables with [its own syntax](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#environment-variables).
 
-If you want, you can practice using environment variables in Robot Framework and define your local variables as `USER1_USERNAME`, `USER1_PASSWORD`, `USER2_USERNAME`, and `USER2_PASSWORD`. These variables are also configured in the GitHub Actions environment, so your tests should work in autograding as well.
+If you want, you can practice using environment variables in Robot Framework and define your local variables with the same names as those in the GitHub Actions environment.
 
 > [!NOTE]
 > To ensure variables work correctly in both your local development environment and GitHub Actions evaluation, only the following variables are supported:
 >
-> * Alice user variables: `USER1_USERNAME`, `USER1_PASSWORD`
-> * Bob user variables: `USER2_USERNAME`, `USER2_PASSWORD`
+> * `JANE_USERNAME` & `JANE_PASSWORD`
+> * `JOHN_USERNAME` & `JOHN_PASSWORD`
+> * `ALICE_USERNAME` & `ALICE_PASSWORD`
+> * `BOB_USERNAME` & `BOB_PASSWORD`
 
 
 ## Automatic assessment of the assignment
