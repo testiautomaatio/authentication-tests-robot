@@ -49,7 +49,7 @@ Rekisteröityminen tällä lomakkeella luo uuden käyttäjätunnuksen, joka on v
 
 Kirjautuminen onnistuu osoitteessa https://authentication-6o1.pages.dev/. Kirjautumisen jälkeen käyttäjä ohjataan osoitteeseen https://authentication-6o1.pages.dev/dashboard, jossa näytetään tervetuloa-viesti. Kuten rekisteröityminen, myös kirjautuminen on voimassa vain saman istunnon sisällä.
 
-Itse luotavien tunnusten lisäksi sivustolla on kaksi valmista tunnusta, jotka ovat aina voimassa:
+Itse luotavien tunnusten lisäksi sivustolla on valmiita tunnuksia, jotka ovat aina voimassa:
 
 | Name     | Username             | Password                           | Env variables in GitHub \*         |
 |----------|----------------------|------------------------------------|------------------------------------|
@@ -76,8 +76,6 @@ Johda seuraavista vaatimuksista testitapaukset ja kirjoita niille testit. Kussak
 
 Jotta pääset alkuun, suosittelemme tutustumaan [Browser-kirjaston](https://marketsquare.github.io/robotframework-browser/Browser.html) dokumentaatioon sekä Robot Frameworkin [guides-osioon](https://docs.robotframework.org/docs) ja [käyttöohjeeseen](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html).
 
-
-### Kirjautuminen
 
 ### Kirjautuminen
 
@@ -117,12 +115,13 @@ Parempi tapa käsitellä salasanoja voisi olla salaisuuksien tallentaminen ympä
 Voit halutessasi tutustua ympäristömuuttujien käyttöön Robot Frameworkissa ja määrittää omat paikalliset ympäristömuuttujasi saman nimisiksi kuin GitHub actions -ympäristössä.
 
 > [!NOTE]
-> Jotta muuttujat toimivat oikein sekä omassa kehitysympäristössäsi että GitHub actions -arvioinnissa, vain seuraavat muuttujat on tuettuja:
+> Jotta muuttujat toimivat oikein sekä omassa kehitysympäristössäsi että GitHub actions -arvioinnissa, vain seuraavat ympäristömuuttujat ovat tuettuja:
 >
 > * `JANE_USERNAME` & `JANE_PASSWORD`
 > * `JOHN_USERNAME` & `JOHN_PASSWORD`
 > * `ALICE_USERNAME` & `ALICE_PASSWORD`
 > * `BOB_USERNAME` & `BOB_PASSWORD`
+
 
 
 ## Tehtävän automaattinen arviointi
