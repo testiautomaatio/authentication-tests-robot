@@ -15,6 +15,9 @@ Robot Framework is a Python-based test automation framework, so using it require
 
 Detailed installation instructions and information about the ready-made devcontainer solution can be found in the separate [installations.md](./installations.md) file.
 
+> [!TIP]
+> This repository includes a development container configuration as described in the [development container section](./devcontainer.md). With the container, you can avoid installation issues and have a ready-to-use isolated environment either in the cloud or locally. We highly encourage using development containers for simplicity, reproducibility and security reasons.
+
 
 ## Running tests
 
