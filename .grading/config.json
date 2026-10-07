@@ -1,0 +1,108 @@
+{
+    "name": "Testing authentication with Robot Framework",
+    "description": "This test suite verifies that the tests are run correctly and that they cover the required functionality.",
+    "tests": [
+        {
+            "name": "Run tests and extract traces",
+            "description": "Run the Robot Framework tests and extract traces for further analysis. Passing this step does not guarantee that your tests covered the required functionality, which is checked by the subsequent tests.",
+            "run": [
+                "robot --outputdir=test-results/ tests/",
+                "./.grading/extract_traces.sh"
+            ],
+            "timeout": "3m",
+            "score": 0,
+            "skipRemainingOnFailure": true
+        },
+        {
+            "name": "Code quality check",
+            "description": "Checks the code quality of the Robot Framework tests using the [Robocop linter](https://github.com/MarketSquare/robotframework-robocop). This step does not affect your score, but it can help you identify potential issues in your tests.",
+            "run": "robocop check",
+            "timeout": "1m",
+            "score": 0
+        },
+        {
+            "name": "Login page is visited",
+            "description": "Checks that the login page was visited during your tests.",
+            "run": "./.grading/find_trace.sh 'your@email.com'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Login email is validated",
+            "description": "Checks that an incorrect email address was rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'Please enter a valid email address.'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Login password is validated",
+            "description": "Checks that a short password was rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'Password must be at least 6 characters long.'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Correct credentials are used",
+            "description": "Checks that a successful login was completed during your tests.",
+            "run": "./.grading/find_trace.sh 'Successfully logged in'",
+            "timeout": "15s",
+            "score": 5
+        },
+        {
+            "name": "Login username is case insensitive",
+            "description": "Checks that a successful login was completed during your tests with an email address in a different case.",
+            "run": "./.grading/find_trace.sh 'login-case-insensitive-email'",
+            "timeout": "15s",
+            "score": 5
+        },
+        {
+            "name": "Invalid credentials are used",
+            "description": "Checks that a failed login attempt was rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'Invalid email or password'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Logout feature is used",
+            "description": "Checks that the user was logged out during your tests.",
+            "run": "./.grading/find_trace.sh 'You have been logged out.'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Dashboard is visited while unauthenticated",
+            "description": "Checks that unauthenticated access to the dashboard was rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'You must be logged in to enter the dashboard'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "New account created successfully during registration",
+            "description": "Checks that a new account was created successfully during your tests.",
+            "run": "./.grading/find_trace.sh 'Account created successfully'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Registration page form validation is completed",
+            "description": "Checks that missing registration fields were rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'name is required'",
+            "timeout": "15s",
+            "score": 10
+        },
+        {
+            "name": "Duplicate email address is rejected during registration",
+            "description": "Checks that registration with an existing email address was rejected during your tests.",
+            "run": "./.grading/find_trace.sh 'Email is already in use'",
+            "timeout": "15s",
+            "score": 5
+        },
+        {
+            "name": "Registration email is case insensitive",
+            "description": "Checks whether the tests included a registration attempt with an email address in a different case than an existing account.",
+            "run": "./.grading/find_trace.sh 'registration-case-insensitive-email-conflict'",
+            "timeout": "15s",
+            "score": 5
+        }
+    ]
+}
