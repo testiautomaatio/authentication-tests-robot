@@ -61,7 +61,7 @@ In addition to the temporary accounts you can create yourself, the site has pred
 
 You can use these credentials in test cases where you need login or registration with an existing user, or where you want to verify that the same account cannot be registered again.
 
-The credentials can also be found in the [`tests/users.resource` file](./tests/users.resource), which is intended for use as a resource in test files.
+The credentials can also be found in the [`tests/users.py` file](./tests/users.py), which is intended for use as a resource in test files.
 
 \* *Read more about environment variables at the end of this document.*
 

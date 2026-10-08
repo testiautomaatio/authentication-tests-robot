@@ -1,15 +1,15 @@
 *** Settings ***
-Library             Browser
-# The users.resource file contains usernames and passwords that can be used:
-Resource            users.resource
+Library          Browser
+# The users.py file contains usernames and passwords that can be used:
+Variables        users.py
 
 # The following lines are required for automatic assessment of the exercise:
-Test Setup          New Context    tracing=True
-Test Teardown       Close Context
+Test Setup       New Context    tracing=True
+Test Teardown    Close Context
 
 
 *** Variables ***
-${SITE_URL}     https://authentication-6o1.pages.dev/
+${SITE_URL}    https://authentication-6o1.pages.dev/
 
 
 *** Test Cases ***
