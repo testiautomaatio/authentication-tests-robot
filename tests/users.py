@@ -15,14 +15,14 @@ https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#se
 
 from robot.api.types import Secret
 
-JANE_USERNAME = Secret("jane.doe@example.com")
+JANE_USERNAME = "jane.doe@example.com"
 JANE_PASSWORD = Secret("ItWorksOnMyMac1!")
 
-JOHN_USERNAME = Secret("john.doe@example.com")
+JOHN_USERNAME = "john.doe@example.com"
 JOHN_PASSWORD = Secret("AllTestsPass1!")
 
-ALICE_USERNAME = Secret("alice@example.com")
-ALICE_PASSWORD = Secret(r"3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj")
+ALICE_USERNAME = "alice@example.com"
+ALICE_PASSWORD = Secret(r"}3jc\xJnQ=E=+Q_y/%Hd311bW#6{_Oyj")
 
-BOB_USERNAME = Secret("bob@example.com")
+BOB_USERNAME = "bob@example.com"
 BOB_PASSWORD = Secret(r"nUL9zA3q=Nt7\N,0?CL&c74U,Ic)0)dN")

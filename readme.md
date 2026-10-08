@@ -61,7 +61,7 @@ Itse luotavien tunnusten lisäksi sivustolla on valmiita tunnuksia, jotka ovat a
 
 Voit käyttää näitä tunnuksia niissä testitapauksissa, joissa tarvitset olemassa olevan käyttäjän kirjautumista tai rekisteröitymistä, tai haluat varmistaa, että samalla tunnuksella ei voi rekisteröityä uudelleen.
 
-Tunnukset löytyvät myös [`tests/users.py`-tiedostosta](./tests/users.py), joka on tarkoitettu käytettäväksi testitiedostoissa resurssina.
+Tunnukset löytyvät myös [`tests/users.py`-tiedostosta](./tests/users.py), joka on tarkoitettu käytettäväksi testitiedostoissa [muuttujatiedostona](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#variable-files).
 
 \* *Lue lisää ympäristömuuttujien käytöstä tämän dokumentin loppuosasta.*
 
