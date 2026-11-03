@@ -68,14 +68,18 @@ Tunnukset löytyvät myös [`tests/users.py`-tiedostosta](./tests/users.py), jok
 
 ## Omien testien toteuttaminen
 
-Kun olet kokeillut testauksen kohteena olevaa sivustoa manuaalisesti, voit aloittaa omien testien kirjoittamisen. Tässä tehtävässä tavoitteena on kirjoittaa testitapaukset sivuston rekisteröitymiseen ja kirjautumiseen. Voit kirjoittaa testit joko yhteen tiedostoon tai eri tiedostoihin, riippuen siitä, miten haluat järjestää testitapauksesi. Tiedostojesi tulee noudattaa Robot Frameworkin testitiedostojen nimeämiskäytäntöä, eli niiden tulee päättyä `.robot`-päätteeseen. Lisäksi niiden tulee sijaita `tests`-kansiossa.
+Kun olet kokeillut testauksen kohteena olevaa sivustoa manuaalisesti, voit aloittaa omien testien kirjoittamisen. Tässä tehtävässä tavoitteena on kirjoittaa testitapaukset sivuston rekisteröitymiseen ja kirjautumiseen. Voit kirjoittaa testit joko yhteen tiedostoon tai eri tiedostoihin, riippuen siitä, miten haluat järjestää testitapauksesi.
+
+Tiedostojesi tulee noudattaa Robot Frameworkin testitiedostojen nimeämiskäytäntöä, eli niiden tulee päättyä `.robot`-päätteeseen. Lisäksi niiden tulee sijaita `tests`-kansiossa.
 
 
 ## Testitapaukset
 
 Johda seuraavista vaatimuksista testitapaukset ja kirjoita niille testit. Kussakin testitapauksessa tulee tehdä tarkoituksenmukaiset toimet (actions) ja tehdä vaadittavat tarkastukset (asserts), jotta voidaan varmistaa, että testattava toiminnallisuus toimii odotetusti. Testitapauksissa tulee huomioida myös tyypilliset virhetilanteet, joita on listattuna alla.
 
-Jotta pääset alkuun, suosittelemme tutustumaan [Browser-kirjaston](https://marketsquare.github.io/robotframework-browser/Browser.html) dokumentaatioon sekä Robot Frameworkin [guides-osioon](https://docs.robotframework.org/docs) ja [käyttöohjeeseen](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html).
+Jotta pääset alkuun, suosittelemme tutustumaan [Browser-kirjaston](https://robotframework-browser.org) dokumentaatioon sekä Robot Frameworkin [guides-osioon](https://docs.robotframework.org/docs) ja [käyttöohjeeseen](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html).
+
+Browser-kirjaston [getting started -opas](https://robotframework-browser.org/docs/start/getting-started/) on erityisen hyvä paikka aloittaa, sillä se sisältää esimerkkitapauksia, jotka auttavat sinua ymmärtämään, miten Robot Frameworkin syntaksi toimii ja miten voit käyttää Browser-kirjastoa testien kirjoittamiseen.
 
 
 ### Kirjautuminen

@@ -75,7 +75,9 @@ After trying the target site manually, you can start writing your own tests. In 
 
 Derive test cases from the following requirements and write tests for them. In each test case, perform appropriate actions and assertions to verify that the tested functionality works as expected. Test cases must also include typical error situations listed below.
 
-To get started, we recommend reviewing the [Browser library](https://marketsquare.github.io/robotframework-browser/Browser.html) documentation as well as the Robot Framework [guides section](https://docs.robotframework.org/docs) and [user guide](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html).
+To get started, we recommend familiarizing yourself with the [Browser library](https://robotframework-browser.org) documentation, as well as the Robot Framework [guides section](https://docs.robotframework.org/docs) and [user guide](https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html).
+
+The Browser library's [getting started guide](https://robotframework-browser.org/docs/start/getting-started/) is an especially good place to begin, as it includes examples that help you understand how Robot Framework syntax works and how to use the Browser library to write tests.
 
 
 ### Login
